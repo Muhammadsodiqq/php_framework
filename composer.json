@@ -1,0 +1,20 @@
+{
+    "name": "admin/phpmvs",
+    "autoload": {
+        "psr-4": {
+            "Admin\\Phpmvs\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Muhammad",
+            "email": "xolmuhammedovm@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4": {
+            "app\\":"./"
+        }
+    },
+    "require": {}
+}
