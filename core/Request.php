@@ -21,11 +21,12 @@ class Request
             return $path;
         }
         $path = substr($path,0,$position);
+        return $path;
     }
 
     public function getMethod() 
     {
-        
+        return strtolower($_SERVER["REQUEST_METHOD"]);
     }
 }
 
