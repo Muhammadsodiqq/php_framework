@@ -1,5 +1,8 @@
 <div class="container">
     <h1>Create Account!</h1>
+    <?php 
+        var_dump($errors)
+    ?>
 <form action="" method="POST">
     <div class="form-group">
         <label >First Name</label>
