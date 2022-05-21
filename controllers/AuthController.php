@@ -30,16 +30,23 @@ use app\models\RegisterModel;
 
     public function register(Request $request) 
     {
+        $registerModel = new RegisterModel();
         if($request->isPost()) {
-            $registerModel = new RegisterModel();
             $registerModel->loadData($request->getBody());
-            
+            echo '<pre>';
+            var_dump($registerModel->errors);
+            echo '</pre>';
+            exit;
             if($registerModel->validate() && $registerModel->register()) {
                 return "succes";
             }
-            return "Handle submitted data";
+            return $this->render("register",[
+                "model" => $registerModel
+            ]);
         }
         $this->setLayout("auth");
-        return $this->render("register");
+        return $this->render("register",[
+            "model" => $registerModel
+        ]);
     }
  }

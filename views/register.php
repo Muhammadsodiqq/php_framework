@@ -1,7 +1,10 @@
 <div class="container">
     <h1>Create Account!</h1>
     <?php 
-        var_dump($errors)
+    if(isset($errors)){
+        var_dump($errors);
+        exit;
+    }
     ?>
 <form action="" method="POST">
     <div class="form-group">
