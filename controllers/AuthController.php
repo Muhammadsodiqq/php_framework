@@ -33,13 +33,15 @@ use app\models\RegisterModel;
         $registerModel = new RegisterModel();
         if($request->isPost()) {
             $registerModel->loadData($request->getBody());
-            echo '<pre>';
-            var_dump($registerModel->errors);
-            echo '</pre>';
-            exit;
+            
+            
             if($registerModel->validate() && $registerModel->register()) {
                 return "succes";
             }
+            // echo '<pre>';
+            // var_dump($registerModel->errors);
+            // echo '</pre>';
+            // exit;
             return $this->render("register",[
                 "model" => $registerModel
             ]);
