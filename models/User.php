@@ -5,18 +5,19 @@
 namespace app\models;
 
 use app\core\Controller;
+use app\core\DbModel;
 use app\core\Model;
 use app\core\Request;
 
 /**
- * Class RegisterModel
+ * Class User
  * 
  * @author Muhammad <xolmuhammedovm@gmail.com>
  * @package  app\controllers;
  * 
  */
 
- class RegisterModel  extends Model
+ class User  extends DbModel
  {
 
    public string $firstname ='';
@@ -25,9 +26,15 @@ use app\core\Request;
    public string $password ='';
    public string $confirmpassword ='';
 
-   public function register() 
+   public function tableName():string
    {
-      echo "Creating new user";
+       return 'users';
+   }
+
+   public function save() 
+   {
+      $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+      return parent::save();
    }
 
    public function rules()
@@ -38,6 +45,16 @@ use app\core\Request;
          "email" => [self::RULE_REQUIRED ,self::RULE_EMAIL],
          "password" => [self::RULE_REQUIRED,[self::RULE_MIN, "min" => 8], [self::RULE_MAX, "max" => 24]],
          "confirmpassword" => [self::RULE_REQUIRED,[self::RULE_MATCH, "match" => "password"]],
+      ];
+   }
+
+   public function attributes():array
+   {
+      return [
+         "firstname",
+         "lastname",
+         "email",
+         "password",
       ];
    }
  }

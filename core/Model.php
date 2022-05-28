@@ -4,7 +4,7 @@
 
 namespace app\core;
 
-use app\models\RegisterModel;
+use app\models\User;
 
 /**
  * Class Model

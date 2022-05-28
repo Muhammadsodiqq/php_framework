@@ -5,7 +5,7 @@
 namespace app\core\form;
 
 use app\core\Model;
-use app\models\RegisterModel;
+use app\models\User;
 
 /**
  * Class Field
